@@ -1,0 +1,22 @@
+{
+  "name": "programacion-backend-frameworks",
+  "version": "1.0.0",
+  "description": "Pruebas",
+  "license": "ISC",
+  "author": "LuisB",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "pnpm": "^11.22.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6"
+  }
+}
