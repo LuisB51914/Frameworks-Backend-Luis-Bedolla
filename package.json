@@ -1,22 +1,30 @@
 {
-  "name": "programacion-backend-frameworks",
+  "name": "task-api-express",
   "version": "1.0.0",
   "description": "Pruebas",
   "license": "ISC",
   "author": "LuisB",
   "type": "module",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
-    "dev": "node --watch src/index.js",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check": "tsc --noEmit",
+    "build": "tsc"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "pnpm": "^11.22.0"
   },
   "devDependencies": {
-    "prettier": "^3.9.6"
+    "@types/express": "^5.0.6",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
   }
 }
