@@ -1,0 +1,14 @@
+|Caso|Método y ruta|Datos enviados|Esperado|Obtenido|requestId|Resultado|
+|-|-|-|-|-|-|-|
+|Obtener todas las tareas|GET `/api/tasks`|No aplica|200 OK|200 OK|N/A|Exitoso|
+|ID no numérico|GET `/api/tasks/abc`|No aplica|400 INVALID\_ID|400 INVALID\_ID|a1bba685-58b9-4b78-b077-b9b4d9bf2f5b|Exitoso|
+|Tarea no existente|GET `/api/tasks/999`|No aplica|404 TASK\_NOT\_FOUND|404 TASK\_NOT\_FOUND|e5a13b83-9a8a-41b3-9729-0a61dec67cac|Exitoso|
+|Ruta inexistente|GET `/ruta-inexistente`|No aplica|404 ROUTE\_NOT\_FOUND|404 ROUTE\_NOT\_FOUND|e0b8d2d9-3ed1-453d-8952-809485d261ee|Exitoso|
+|Media Type no soportado|POST `/api/tasks`|JSON sin header Content-Type|415 UNSUPPORTED\_MEDIA\_TYPE|415 UNSUPPORTED\_MEDIA\_TYPE|ebfd846f-6c09-4088-8979-12cf50b5b3c7|Exitoso|
+|JSON inválido|POST `/api/tasks`|JSON malformado|400 INVALID\_JSON|400 INVALID\_JSON|fab87cdb-f67f-4f01-b41e-f6b760d4a7e0|Exitoso|
+|Título vacío|POST `/api/tasks`|`{"title":""}`|422 VALIDATION\_ERROR|422 VALIDATION\_ERROR|cff5adce-4008-4f6e-8be9-046a377725ff|Exitoso|
+|Cuerpo vacío (Falta título)|POST `/api/tasks`|`{}`|422 VALIDATION\_ERROR|422 VALIDATION\_ERROR|f90498a3-982f-4219-80f6-5e73b0808532|Exitoso|
+|Error del servidor (Controlado)|GET `/api/tasks/explode` (Simulado)|No aplica|500 INTERNAL\_SERVER\_ERROR|500 INTERNAL\_SERVER\_ERROR|*\[Autogenerado]*|Exitoso|
+
+
+
