@@ -19,6 +19,7 @@
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "mongoose": "^8.24.4",
     "pnpm": "^11.22.0"
   },
   "devDependencies": {
