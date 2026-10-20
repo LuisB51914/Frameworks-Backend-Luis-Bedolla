@@ -3,19 +3,20 @@ export const TASK_STATUSES = ["pending", "completed"] as const;
 export type TaskStatus = (typeof TASK_STATUSES)[number];
 export interface TaskPersistence {
   title: string;
-  description?: string;
   status: TaskStatus;
   createdAt: Date;
   updatedAt: Date;
 }
-
 export interface Task {
   id: string;
   title: string;
-  description?: string;
   status: TaskStatus;
   createdAt: Date;
   updatedAt: Date;
+}
+export interface TaskUpdate {
+  title?: string;
+  status?: TaskStatus;
 }
 const taskSchema = new Schema<TaskPersistence>(
   {
@@ -24,11 +25,6 @@ const taskSchema = new Schema<TaskPersistence>(
       required: [true, "El título es obligatorio."],
       trim: true,
       maxlength: [120, "El título no debe superar 120 caracteres."],
-    },
-    description: {
-      type: String,
-      trim: true,
-      maxlength: [300, "La descripción no debe superar 300 caracteres."],
     },
     status: {
       type: String,
