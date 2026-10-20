@@ -5,22 +5,16 @@ import {
   deleteTask,
   findTaskById,
   listTasks,
+  updateTask,
 } from "../services/task.service.js";
-import type { TaskCreationLocals } from "../middlewares/validate-task-title.middleware.js";
 export const getTasks = async (_req: Request, res: Response): Promise<void> => {
   res.status(200).json({ data: await listTasks() });
 };
 export const getTask = async (_req: Request, res: Response): Promise<void> => {
   res.status(200).json({ data: await findTaskById(res.locals.taskId) });
 };
-export const postTask = async (
-  _req: Request,
-  res: Response<unknown, TaskCreationLocals>,
-): Promise<void> => {
-  const task = await createTask(
-    res.locals.taskTitle,
-    res.locals.taskDescription,
-  );
+export const postTask = async (_req: Request, res: Response): Promise<void> => {
+  const task = await createTask(res.locals.taskTitle);
   res.status(201).json({ data: task });
 };
 export const patchTaskComplete = async (
@@ -28,6 +22,13 @@ export const patchTaskComplete = async (
   res: Response,
 ): Promise<void> => {
   const task = await completeTask(res.locals.taskId);
+  res.status(200).json({ data: task });
+};
+export const patchTask = async (
+  _req: Request,
+  res: Response,
+): Promise<void> => {
+  const task = await updateTask(res.locals.taskId, res.locals.taskUpdate);
   res.status(200).json({ data: task });
 };
 export const removeTask = async (
